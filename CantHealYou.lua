@@ -307,6 +307,8 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
           end
         else
           Debug("error does not match any condition")
+          Debug("Clear raidtarget - SetRaidTarget=0"..mytarget)
+          SetRaidTarget(mytarget, 0)
           return
         end
         -- we only reach here if we didn't hit the default "else"
