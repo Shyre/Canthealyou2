@@ -37,7 +37,7 @@ local incombat = false
 local ontaxi = 0
 local incapacitated = false
 local imahealer = false
-local lastTargetIcon = 0
+local allOkayTargetIcon = 4
 
 local function Debug(text)
   if debugmode then
@@ -101,9 +101,6 @@ local function Whisper(who, message)
   end
   timestamp[name] = time()
   SendChatMessage(message, "WHISPER", nil, name)
-
-  lastTargetIcon = GetRaidTargetIndex(unit);
-  Debug("lastTargetIcon "..lastTargetIcon.." s")
   -- Sonni added.
   SetRaidTarget(unit,7);
 end
@@ -375,11 +372,7 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
       Broadcast(CHYconfig.LostControl)
     else
       Debug("ELSE REACHED")
-      if(lastTargetIcon ~= 0) then
-        SetRaidTarget("target", lastTargetIcon)
-      else
-        SetRaidTarget("target",0)
-      end
+      SetRaidTarget("target", allOkayTargetIcon)
         -- UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_CHANNEL_STOP, or UNIT_SPELLCAST_SUCCEEDED 
         if arg1 == "player" and arg4 == currentspell.spell and currentspell.target then
             -- looks to be the spell we're keeping, so release it
