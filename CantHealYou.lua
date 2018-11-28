@@ -316,6 +316,8 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
           DoTheWarn( mytarget, currentspell.spell, message)
           currentspell.spell = nil
           currentspell.target = nil
+        else
+          SetRaidTarget(mytarget, 0)
         end
     elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
       -- entering or leaving combat, so clear timers
@@ -383,7 +385,7 @@ function CantHealYou_warn(str)
   if IsSpellInRange(spell, target) == 0 then
     DoTheWarn(target, spell, CHYconfig.OutOfRange )
   else
-    SetRaidTarget(FindUnitFor(who),0);
+    SetRaidTarget(FindUnitFor(target),0);
     --GetRaidTargetIndex(FindUnitFor(who));
   end
 end
