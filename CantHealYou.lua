@@ -285,6 +285,8 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
     elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
       Debug("Clear raidtarget - SetRaidTarget=0"..mytarget)
       SetRaidTarget(mytarget, 0)
+    else
+      Debug("ELSE REACHED"..mytarget)
     elseif event == "UNIT_SPELLCAST_FAILED" or event == "UNIT_SPELLCAST_FAILED_QUIET" then
         if arg1 == "player" and arg4 == currentspell.spell and currentspell.target then
             Debug("cast of "..arg4.." on "..currentspell.target.." failed")
