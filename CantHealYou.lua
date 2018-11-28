@@ -374,7 +374,7 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
       Broadcast(CHYconfig.LostControl)
     else
       Debug("ELSE REACHED")
-      if(lastTargetIcon != 0) then
+      if(lastTargetIcon ~= 0) then
         SetRaidTarget("target", lastTargetIcon)
       else
         SetRaidTarget("target",0)
