@@ -16,7 +16,7 @@
 local CantHealYouFrame = CreateFrame("FRAME", nil, UIParent)
 CantHealYouFrame:Hide()
 
-local debugmode = false
+local debugmode = true
 
 -- for detecting when heal spells can't be cast
 
@@ -317,6 +317,7 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
           currentspell.spell = nil
           currentspell.target = nil
         else
+          Debug("SetRaidTarget"..mytarget)
           SetRaidTarget(mytarget, 0)
         end
     elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
