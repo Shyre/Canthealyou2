@@ -282,9 +282,6 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
             currentspell.target = arg2
             Debug(arg1.." is casting "..arg4.." on "..arg2)
         end
-    elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
-      Debug("Clear raidtarget - SetRaidTarget=0"..mytarget)
-      SetRaidTarget(mytarget, 0)
     elseif event == "UNIT_SPELLCAST_FAILED" or event == "UNIT_SPELLCAST_FAILED_QUIET" then
         if arg1 == "player" and arg4 == currentspell.spell and currentspell.target then
             Debug("cast of "..arg4.." on "..currentspell.target.." failed")
@@ -374,8 +371,6 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
       if incapacitated then return else incapacitated = true end
       if not CHYconfig.DoLostControl then return end
       Broadcast(CHYconfig.LostControl)
-    elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
-      Debug("ELSEIF UNIT_SPELLCAST_SUCCEEDED REACHED")
     else
       Debug("ELSE REACHED")
         -- UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_CHANNEL_STOP, or UNIT_SPELLCAST_SUCCEEDED
