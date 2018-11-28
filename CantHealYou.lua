@@ -374,7 +374,7 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
       if incapacitated then return else incapacitated = true end
       if not CHYconfig.DoLostControl then return end
       Broadcast(CHYconfig.LostControl)
-    elseif event == "UNIT_SPELLCAST_SUCCEEDED"
+    elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
       Debug("ELSEIF UNIT_SPELLCAST_SUCCEEDED REACHED")
     else
       Debug("ELSE REACHED")
