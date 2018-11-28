@@ -285,8 +285,6 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
     elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
       Debug("Clear raidtarget - SetRaidTarget=0"..mytarget)
       SetRaidTarget(mytarget, 0)
-    else
-      Debug("ELSE REACHED"..mytarget)
     elseif event == "UNIT_SPELLCAST_FAILED" or event == "UNIT_SPELLCAST_FAILED_QUIET" then
         if arg1 == "player" and arg4 == currentspell.spell and currentspell.target then
             Debug("cast of "..arg4.." on "..currentspell.target.." failed")
@@ -377,6 +375,7 @@ function CantHealYou_OnEvent(self, event, arg1, arg2, arg3, arg4)
       if not CHYconfig.DoLostControl then return end
       Broadcast(CHYconfig.LostControl)
     else
+      Debug("ELSE REACHED")
         -- UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_CHANNEL_STOP, or UNIT_SPELLCAST_SUCCEEDED
         if arg1 == "player" and arg4 == currentspell.spell and currentspell.target then
             -- looks to be the spell we're keeping, so release it
